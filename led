@@ -3,7 +3,7 @@ p() {
   echo "$1"
 }
 
-ver="2.0.0"
+ver="2.1.0"
 MODPATH="/data/adb/modules/brightness-fix"
 if [ ! -d "/sys/class/leds/lcd-backlight" ]; then
   p "Ur device isn't support this module!, Abort."
@@ -69,7 +69,6 @@ elif [ "$choice" = "0" ]; then
 else
   p
   p "Invalid input!, Abort."
-  sleep 3
+  sleep 1
   exit 1
-  su -c led
 fi
