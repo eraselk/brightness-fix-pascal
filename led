@@ -29,16 +29,16 @@ echo -n "==> "; read choice
 if [ "$choice" = "1" ]; then
   clear
   set -x
-  echo "2047" > "/sys/class/leds/lcd-backlight/brightness"
-  echo "2047" > "$MODPATH/.tmp"
+  echo "2047" >/sys/class/leds/lcd-backlight/brightness
+  echo "2047" >$MODPATH/.tmp
   kill $(pgrep -f auto_adj); nohup auto_adj > /dev/null 2>&1
 
 # 2
 elif [ "$choice" = "2" ]; then
   clear
   set -x 
-  echo "255" > "/sys/class/leds/lcd-backlight/brightness"
-  echo "255" > "$MODPATH/.tmp"
+  echo "255" >/sys/class/leds/lcd-backlight/brightness
+  echo "255" >$MODPATH/.tmp
   kill $(pgrep -f auto_adj); nohup auto_adj > /dev/null 2>&1
 
 # 4
@@ -49,16 +49,16 @@ elif [ "$choice" = "4" ]; then
   p
   echo -n "==> "; read cusbr
   sleep 2
-  echo "$cusbr" > "/sys/class/leds/lcd-backlight/brightness"
-  echo "$cusbr" > "$MODPATH/.tmp"
+  echo "$cusbr" >/sys/class/leds/lcd-backlight/brightness
+  echo "$cusbr" >$MODPATH/.tmp
   kill $(pgrep -f auto_adj); nohup auto_adj > /dev/null 2>&1
 
 # 3
 elif [ "$choice" = "3" ]; then
   clear
   set -x
-  echo "1023" > "/sys/class/leds/lcd-backlight/brightness"
-  echo "1023" > "$MODPATH/.tmp"
+  echo "1023" >/sys/class/leds/lcd-backlight/brightness
+  echo "1023" >$MODPATH/.tmp
   kill $(pgrep -f auto_adj); nohup auto_adj > /dev/null 2>&1
 
 # exit choice function
