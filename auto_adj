@@ -11,13 +11,13 @@ fi
 
 # default val
 if [ -z "$(cat /data/adb/modules/brightness-fix/.tmp)" ]; then
-    echo "2047" > "/data/adb/modules/brightness-fix/.tmp"
+    echo "2047" >/data/adb/modules/brightness-fix/.tmp
 fi
 
 # main
 while true; do
     if [ ! "$(cat /sys/class/leds/lcd-backlight/brightness)" = "$configuration" ]; then
-        echo "$configuration" > "/sys/class/leds/lcd-backlight/brightness"
+        echo "$configuration" >/sys/class/leds/lcd-backlight/brightness
         sleep 1
     fi 
 done
