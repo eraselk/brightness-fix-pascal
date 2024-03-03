@@ -1,4 +1,4 @@
-#!/data/adb/magisk/busybox sh
+#!/bin/sh
 SKIPMOUNT=false
 PROPFILE=false
 POSTFSDATA=false

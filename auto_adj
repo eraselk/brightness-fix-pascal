@@ -1,4 +1,4 @@
-#!/data/adb/magisk/busybox sh
+#!/bin/sh
 
 {
 configuration="$(cat /data/adb/modules/brightness-fix/.tmp)"
@@ -21,4 +21,4 @@ while true; do
         sleep 1
     fi 
 done
-} > /dev/null 2>&1
+} >/dev/null 2>&1
