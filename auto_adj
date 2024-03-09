@@ -1,24 +1,22 @@
 #!/bin/sh
-
 {
-configuration="$(cat /data/adb/modules/brightness-fix/.tmp)"
+configuration_value="$(cat /data/adb/modules/brightness-fix/.tmp)"
+configuration_file="/data/adb/modules/brightness-fix/.tmp"
 
-if pgrep -x "led" > /dev/null; then
-    kill -STOP $(pgrep -f led)
-else
-sleep 1
+if pgrep -x "led" >/dev/null 2>&1; then
+kill -STOP $(pgrep -x led)
 fi
 
-# default val
-if [ -z "$(cat /data/adb/modules/brightness-fix/.tmp)" ]; then
-    echo "2047" >/data/adb/modules/brightness-fix/.tmp
+if [ -z "$configuration_value" ]; then 
+echo "2047" > "$configuration_file"
 fi
 
-# main
+
+# MAIN SCRIPT
 while true; do
-    if [ ! "$(cat /sys/class/leds/lcd-backlight/brightness)" = "$configuration" ]; then
-        echo "$configuration" >/sys/class/leds/lcd-backlight/brightness
+    if [ "$(cat /sys/class/leds/lcd-backlight/brightness)" != "$configuration_value" ]; then
+        echo "$configuration_value" > "/sys/class/leds/lcd-backlight/brightness"
         sleep 1
     fi 
 done
-} >/dev/null 2>&1
+} > /dev/null 2>&1

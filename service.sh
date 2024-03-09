@@ -1,3 +1,4 @@
-sleep 5
+#!/bin/sh
+sleep 15s
 resetprop -nf /data/local/tmp/brightness
-auto_adj
+/system/bin/auto_adj

@@ -1,6 +1,6 @@
 id=brightness-fix
 name=Brightness Fix
-version=2.1.0-s1
-versionCode=2101
+version=2.1.0-s2
+versionCode=2102
 author=eraselk
 description=Fix low brightness on all RM6765 roms, enter su -c led on terminal to setting ur screen brightness. The default value is 2047 (MAX).

@@ -10,7 +10,7 @@ unzip -o "$ZIPFILE" 'auto_adj' -d "$MODPATH" >&2
 unzip -o "$ZIPFILE" 'led' -d "$MODPATH" >&2
 unzip -o "$ZIPFILE" 'service.sh' -d "$MODPATH" >&2
 
-if [ -e "/data/local/tmp/brightness" ]; then
+if [ -f "/data/local/tmp/brightness" ]; then
 rm -f /data/local/tmp/brightness
 fi
 
