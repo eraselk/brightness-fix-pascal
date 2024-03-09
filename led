@@ -3,6 +3,9 @@ p() {
   echo "$1"
 }
 
+devices="$(cat /system/build.prop | grep ro.product.device= | cut -f 2 -d '=')"
+siapagua="$(whoami)"
+
 if [ ! -d "/sys/class/leds/lcd-backlight" ]; then
 p "Ur device isn't support this module!, Aborted." && exit 1 
 fi
@@ -22,12 +25,12 @@ p "Current Brightness: $(cat /sys/class/leds/lcd-backlight/brightness)"
 p "Max Brightness: $(cat /sys/class/leds/lcd-backlight/max_brightness)"
 p
 p "[1] Max (2047)"
-p "[2] Min (255)"
+p "[2] Min (256)"
 p "[3] Half (1023)"
 p "[4] Custom (0 - 2047)"
 p "[0] Exit"
 p
-echo -n "==> "; read choice
+echo -n "${devices}@${siapagua}: "; read choice
 
 case "$choice" in
  1)
@@ -40,8 +43,8 @@ case "$choice" in
  2)
    clear
    set -x 
-   echo "255" > "/sys/class/leds/lcd-backlight/brightness"
-   echo "255" > "$MODPATH/.tmp"
+   echo "256" > "/sys/class/leds/lcd-backlight/brightness"
+   echo "256" > "$MODPATH/.tmp"
    kill $(pgrep -x auto_adj); nohup auto_adj > /dev/null 2>&1 ;;
 
  4)
@@ -49,7 +52,7 @@ case "$choice" in
    p
    p "Enter your custom brightness (0 - 2047)"
    p
-   echo -n "==> "; read cusbr
+   echo -n "${devices}@${siapagua}: "; read cusbr
    sleep 2
    echo "$cusbr" > "/sys/class/leds/lcd-backlight/brightness"
    echo "$cusbr" > "$MODPATH/.tmp"
