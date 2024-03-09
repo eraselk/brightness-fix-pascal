@@ -14,8 +14,13 @@ if [ -f "/data/local/tmp/brightness" ]; then
 rm -f /data/local/tmp/brightness
 fi
 
+if [ -d "/data/adb/modules/brightness-fix" ]; then
+ mv -f /data/adb/modules/brightness-fix/.tmp $MODPATH/.tmp
+else
+  touch $MODPATH/.tmp
+fi
+
 mv -f $MODPATH/brightness /data/local/tmp/brightness
-touch $MODPATH/.tmp
 mkdir -p $MODPATH/system/bin
 mv -f $MODPATH/led $MODPATH/system/bin/led
 mv -f $MODPATH/auto_adj $MODPATH/system/bin/auto_adj
